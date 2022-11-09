@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Redis } from "@upstash/redis/with-fetch";
 import { ethers } from "ethers";
+import { verifySignature } from "@upstash/qstash/nextjs";
 
 const MAX_DATA_COUNT = 24 * 30; // 30日分のデータ
 
@@ -36,4 +37,10 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   res.status(200).json(feeInfo);
 }
 
-export default handler;
+export default verifySignature(handler);
+
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
