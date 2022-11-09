@@ -7,7 +7,7 @@ export default async function handler(
 ) {
   const redis = Redis.fromEnv();
   const key = "goerli-hourly";
-  const data = await redis.lrange(key, 0, 24 * 8); // 8日分
+  const data = await redis.lrange(key, 0, -1);
 
   res.status(200).json(data);
 }

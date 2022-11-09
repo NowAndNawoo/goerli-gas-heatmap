@@ -5,6 +5,8 @@ import useSWR from "swr";
 import { useEffect, useState } from "react";
 import { maxBy, range } from "lodash";
 
+const DAY_COUNT = 8;
+
 type FeeInfo = {
   block: number;
   time: number;
@@ -44,7 +46,7 @@ function toHeatmapProps(data: FeeInfo[]): HeatmapProps {
     date: new Date(feeInfo.time).setHours(0, 0, 0, 0),
   }));
   const lastDate = new Date(maxBy(fees, "date")?.date!);
-  const dates = range(8)
+  const dates = range(DAY_COUNT)
     .map((i) => addDate(lastDate, -i).getTime())
     .reverse();
   const hours = range(24);
