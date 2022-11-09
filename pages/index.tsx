@@ -58,7 +58,7 @@ function toHeatmapProps(data: FeeInfo[]): HeatmapProps {
       const reward20 = item.rewards[0] / 10 ** 9;
       const reward50 = item.rewards[1] / 10 ** 9;
       const reward80 = item.rewards[2] / 10 ** 9;
-      const total = base + reward50;
+      const total = base + reward20;
       const dateStr = getXLabel(date);
       const timeStr = getYLabel(hour);
       return {
