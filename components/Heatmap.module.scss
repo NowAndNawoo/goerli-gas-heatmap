@@ -1,0 +1,67 @@
+.root {
+  display: flex;
+  // border: 1px solid green;
+}
+.col {
+  // border: 1px solid red;
+}
+.cell {
+  margin: 1px;
+  padding: 2px;
+  // border: 1px solid blue;
+  width: 100px;
+  height: 18px;
+  text-align: center;
+  font-size: 11px;
+  border-radius: 4px;
+}
+.yAxisCol {
+  @extend .col;
+}
+.yAxisCell {
+  @extend .cell;
+  width: 40px;
+}
+.xAxisCell {
+  @extend .cell;
+}
+.cellNull {
+  @extend .cell;
+  background-color: #d6d6d6;
+}
+.cell1 {
+  /* 0 < 0.1 */
+  @extend .cell;
+  background-color: #bddaff;
+}
+.cell2 {
+  /* 0.1 < 1 */
+  @extend .cell;
+  background-color: #bdffbd;
+}
+.cell3 {
+  /* 1 < 10 */
+  @extend .cell;
+  background-color: #faeea3;
+}
+.cell4 {
+  /* 10 < 100 */
+  @extend .cell;
+  background-color: #fcac96;
+}
+.cell5 {
+  /* 100 < 300 */
+  @extend .cell;
+  background-color: #ff5858;
+}
+.cell6 {
+  /* 300 < */
+  @extend .cell;
+  background-color: #8e1f1f;
+}
+
+@media (max-width: 1000px) {
+  .cell {
+    width: 60px;
+  }
+}
