@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 import { Redis } from "@upstash/redis/with-fetch";
+import { ethers } from "ethers";
 
 const MAX_DATA_COUNT = 24 * 30; // 30日分のデータ
 
@@ -11,14 +11,17 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     return;
   }
   const url = `https://eth-goerli.g.alchemy.com/v2/${alchemyApiKey}`;
-  const web3 = createAlchemyWeb3(url);
-
-  const feeHistory = await web3.eth.getFeeHistory(1, "latest", [20, 50, 80]);
+  const provider = new ethers.providers.JsonRpcProvider(url);
+  const feeHistory = await provider.send("eth_feeHistory", [
+    1,
+    "latest",
+    [20, 50, 80],
+  ]);
   const feeInfo = {
     block: Number(feeHistory.oldestBlock),
     time: new Date().setUTCMinutes(0, 0, 0),
     base: Number(feeHistory.baseFeePerGas[0]),
-    rewards: feeHistory.reward[0].map((s) => Number(s)),
+    rewards: feeHistory.reward[0].map((s: any) => Number(s)),
   };
 
   const redis = Redis.fromEnv();
