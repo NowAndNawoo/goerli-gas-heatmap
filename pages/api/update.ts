@@ -20,16 +20,13 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     base: Number(feeHistory.baseFeePerGas[0]),
     rewards: feeHistory.reward[0].map((s) => Number(s)),
   };
-  console.log({ feeInfo });
 
   const redis = Redis.fromEnv();
   const redisKey = `goerli-hourly`;
   const lastFeeInfo = await redis.lindex(redisKey, 0);
-  console.log({ lastFeeInfo });
   const lastTime = lastFeeInfo == null ? 0 : lastFeeInfo.time;
   if (lastTime !== feeInfo.time) {
-    const newValue = JSON.stringify(feeInfo);
-    await redis.lpush(redisKey, newValue);
+    await redis.lpush(redisKey, feeInfo);
     await redis.ltrim(redisKey, 0, MAX_DATA_COUNT - 1);
   }
 
