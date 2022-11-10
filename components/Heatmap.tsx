@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./Heatmap.module.scss";
 
 export type HeatmapItem = {
@@ -6,16 +7,27 @@ export type HeatmapItem = {
   hint: string;
 };
 
+export type LegendItem = {
+  style: string;
+  label: string;
+};
+
 export type HeatmapProps = {
   fields: HeatmapItem[][];
   xValues: string[];
   yValues: string[];
+  legends?: LegendItem[];
 };
 
-export default function Heatmap({ fields, xValues, yValues }: HeatmapProps) {
+export default function Heatmap({
+  fields,
+  xValues,
+  yValues,
+  legends,
+}: HeatmapProps) {
   return (
-    <>
-      <div className={styles.root}>
+    <div className={styles.root}>
+      <div className={styles.heatmap}>
         <div className={styles.yAxisCol}>
           {yValues.map((y, i) => (
             <div key={i} className={styles.yAxisCell}>
@@ -35,6 +47,16 @@ export default function Heatmap({ fields, xValues, yValues }: HeatmapProps) {
           </div>
         ))}
       </div>
-    </>
+      {legends && (
+        <div className={styles.legends}>
+          {legends.map(({ style, label }, i) => (
+            <React.Fragment key={i}>
+              <div className={styles[style] + " " + styles.legendMark}> </div>
+              <div className={styles.legendLabel}>{label}</div>
+            </React.Fragment>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }

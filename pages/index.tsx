@@ -78,7 +78,16 @@ Total: ${total.toFixed(4)}`,
   const xValues = dates.map((date) => getXLabel(date));
   const yValues = hours.map((hour) => getYLabel(hour));
 
-  return { fields, xValues, yValues };
+  const legends = [
+    { style: "cell1", label: "< 0.1 gwei" },
+    { style: "cell2", label: "< 1 gwei" },
+    { style: "cell3", label: "< 10 gwei" },
+    { style: "cell4", label: "< 100 gwei" },
+    { style: "cell5", label: "< 300 gwei" },
+    { style: "cell6", label: "> 300 gwei" },
+  ];
+
+  return { fields, xValues, yValues, legends };
 }
 
 export default function Home() {

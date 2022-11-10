@@ -1,18 +1,19 @@
 .root {
+  font-size: 11px;
+}
+
+.heatmap {
   display: flex;
-  // border: 1px solid green;
 }
 .col {
-  // border: 1px solid red;
+  //
 }
 .cell {
   margin: 1px;
   padding: 2px;
-  // border: 1px solid blue;
   width: 100px;
   height: 18px;
   text-align: center;
-  font-size: 11px;
   border-radius: 4px;
 }
 .yAxisCol {
@@ -64,4 +65,19 @@
   .cell {
     width: 60px;
   }
+}
+
+.legends {
+  margin: 20px;
+  display: flex;
+  border-radius: 4px;
+  justify-content: center;
+}
+.legendMark {
+  width: 20px;
+  height: 1rem;
+  margin-left: 10px;
+}
+.legendLabel {
+  margin-left: 4px;
 }
