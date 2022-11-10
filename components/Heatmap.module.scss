@@ -1,0 +1,87 @@
+.root {
+  font-size: 11px;
+}
+.heatmap {
+  display: flex;
+}
+
+.col {
+  //
+}
+.timesCol {
+  //
+}
+
+.cell {
+  margin: 1px;
+  padding: 2px;
+  width: 100px;
+  height: 18px;
+  text-align: center;
+  border-radius: 4px;
+}
+.dateCell {
+  @extend .cell;
+  // height: 20px;
+  padding-top: 6px;
+}
+.timeCell {
+  @extend .cell;
+  width: 40px;
+}
+
+.cellNull {
+  @extend .cell;
+  background-color: #d6d6d6;
+}
+.cell1 {
+  /* 0 < 0.1 */
+  @extend .cell;
+  background-color: #bddaff;
+}
+.cell2 {
+  /* 0.1 < 1 */
+  @extend .cell;
+  background-color: #bdffbd;
+}
+.cell3 {
+  /* 1 < 10 */
+  @extend .cell;
+  background-color: #faeea3;
+}
+.cell4 {
+  /* 10 < 100 */
+  @extend .cell;
+  background-color: #fcac96;
+}
+.cell5 {
+  /* 100 < 300 */
+  @extend .cell;
+  background-color: #ff5858;
+}
+.cell6 {
+  /* 300 < */
+  @extend .cell;
+  background-color: #8e1f1f;
+}
+
+@media (max-width: 1000px) {
+  .cell {
+    width: 60px;
+  }
+}
+
+.legends {
+  margin: 20px;
+  display: flex;
+  border-radius: 4px;
+  justify-content: center;
+}
+.legendMark {
+  width: 20px;
+  height: 1rem;
+  margin-left: 10px;
+}
+.legendLabel {
+  margin-left: 4px;
+}
