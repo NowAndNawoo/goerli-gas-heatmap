@@ -28,22 +28,22 @@ export default function Heatmap({
   return (
     <div className={styles.root}>
       <div className={styles.heatmap}>
-        <div className={styles.yAxisCol}>
+        <div className={styles.timesCol}>
+          <div className={styles.originCell}> </div>
           {yValues.map((y, i) => (
-            <div key={i} className={styles.yAxisCell}>
+            <div key={i} className={styles.timeCell}>
               {y}
             </div>
           ))}
-          <div className={styles.yAxisCell}></div>
         </div>
         {fields.map((col, i) => (
           <div key={i} className={styles.col}>
+            <div className={styles.dateCell}>{xValues[i]}</div>
             {col.map((cell, i) => (
               <div key={i} title={cell.hint} className={styles[cell.style]}>
                 {cell.value}
               </div>
             ))}
-            <div className={styles.xAxisCell}>{xValues[i]}</div>
           </div>
         ))}
       </div>

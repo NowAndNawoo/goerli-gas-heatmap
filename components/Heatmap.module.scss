@@ -1,13 +1,17 @@
 .root {
   font-size: 11px;
 }
-
 .heatmap {
   display: flex;
 }
+
 .col {
   //
 }
+.timesCol {
+  //
+}
+
 .cell {
   margin: 1px;
   padding: 2px;
@@ -16,16 +20,22 @@
   text-align: center;
   border-radius: 4px;
 }
-.yAxisCol {
-  @extend .col;
+.dateCell {
+  @extend .cell;
+  height: 20px;
+  // border: 1px solid blue;
 }
-.yAxisCell {
+.originCell {
+  @extend .cell;
+  width: 40px;
+  height: 20px;
+  // border: 1px solid red;
+}
+.timeCell {
   @extend .cell;
   width: 40px;
 }
-.xAxisCell {
-  @extend .cell;
-}
+
 .cellNull {
   @extend .cell;
   background-color: #d6d6d6;
