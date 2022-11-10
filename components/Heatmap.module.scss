@@ -22,14 +22,8 @@
 }
 .dateCell {
   @extend .cell;
-  height: 20px;
-  // border: 1px solid blue;
-}
-.originCell {
-  @extend .cell;
-  width: 40px;
-  height: 20px;
-  // border: 1px solid red;
+  // height: 20px;
+  padding-top: 6px;
 }
 .timeCell {
   @extend .cell;
