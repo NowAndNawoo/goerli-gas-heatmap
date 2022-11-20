@@ -85,3 +85,40 @@
 .legendLabel {
   margin-left: 4px;
 }
+
+// Tooltip
+// https://www.jungleocean.com/programming/190308tooltip-css
+.tooltip {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+}
+.tooltip p {
+  margin: 0;
+  padding: 0;
+}
+.detail {
+  display: none;
+  position: absolute;
+  padding: 10px;
+  font-size: 12px;
+  line-height: 1.6em;
+  color: #fff;
+  border-radius: 5px;
+  background: #000;
+  width: 100px;
+}
+.detail:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border: 15px solid transparent;
+  border-top: 15px solid #000;
+  margin-left: -15px;
+}
+.tooltip:hover .detail {
+  display: inline-block;
+  top: -70px;
+  left: -30px;
+}
